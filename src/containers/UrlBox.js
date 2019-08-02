@@ -98,8 +98,6 @@ class urlBox extends Component {
         }
     }
 
-
-
     render() {
         return (
             <div className="urlBox" >

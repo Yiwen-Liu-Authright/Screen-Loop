@@ -49,8 +49,8 @@ class ScreenLoop extends Component {
                     // loopHandler={this.loopHandler}
                     currentInterval={this.state.currentInterval}
                 />
-                {console.log("Option List: " + this.state.optionList)}
-                {console.log("CurrentInterval: " + this.state.currentInterval)}
+                {/* {console.log("Option List: " + this.state.optionList)}
+                {console.log("CurrentInterval: " + this.state.currentInterval)} */}
 
             </Aux>
         )
