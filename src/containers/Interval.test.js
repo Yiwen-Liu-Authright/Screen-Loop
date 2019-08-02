@@ -43,7 +43,7 @@ describe('Interval', () => {
         UrlBoxWrapper.find('#abc').simulate('click'); 
         // expect(UrlBoxWrapper.find('.btn').first(5).type()).toHaveLength(5);
         // expect(UrlBoxWrapper.state().newInterval).toBe(5)
-        expect(wrapper.state().currentInterval).toBe(5);  
+        expect(wrapper.state().currentInterval).toBe(5);
     });
 
 });
