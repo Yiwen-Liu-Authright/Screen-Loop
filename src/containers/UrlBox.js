@@ -144,7 +144,7 @@ class urlBox extends Component {
                         <button className="btn btn-light btn-block" onClick={this.addOption}>Add URL</button>
                     </div>
                     <div className="col-1">
-                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
+                        <button id='abc' className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
                     </div>
                     <div className="col-2">
                         <input
