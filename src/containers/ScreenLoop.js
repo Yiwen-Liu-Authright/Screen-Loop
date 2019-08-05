@@ -17,6 +17,7 @@ class ScreenLoop extends Component {
                 "//placekitten.com/4000/3000",
                 "//placekitten.com/800/1200",
                 "//placekitten.com/1500/1500"],
+                
         currentInterval: undefined,
         // loop: undefined,
     };
