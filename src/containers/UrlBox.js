@@ -45,10 +45,14 @@ class urlBox extends Component {
             nextOptionList[index + 1] = nextOptionList[index];
             nextOptionList[index] = temp;
             this.props.optionListHandler(nextOptionList);
+            // return for test
+            return nextOptionList;
             // this.setState({
             //     optionList: nextOptionList
             // })
         }
+        // return for test
+        return this.props.optionList;
     }
 
     removeOption = () => {

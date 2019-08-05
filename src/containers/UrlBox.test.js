@@ -3,9 +3,7 @@ import React from 'react';
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16'
 
-import ScreenLoop from './ScreenLoop';
 import UrlBox from './UrlBox';
-import { isTSAnyKeyword, exportAllDeclaration, isExportDefaultSpecifier } from '@babel/types';
 
 configure({ adapter: new Adapter() });
 
@@ -21,28 +19,32 @@ describe('<UrlBox/> Move Url Down', () => {
         expect(wrapper.state('selectOption')).toBe(undefined);
     });
 
-    // it('=> Without selected option, after running the move url down, suppose not change the url order', () => {
-    //     const testList = [1, 2, 3];
-    //     const screenLoopWrapper = shallow(<ScreenLoop />);
-    //     const urlBoxWrapper = shallow(<UrlBox
-    //         optionList={testList}
-    //         optionListHandler={screenLoopWrapper.instance().optionListHandler}
-    //     />);
-    //     urlBoxWrapper.setState({ selectOption: 4});
-    //     urlBoxWrapper.instance().moveDownOption();
-    //     expect(screenLoopWrapper.state('optionList')).toMatchObject([1, 2, 3]);
-    // })
+    it('=> Without selected option, after running the move url down, suppose not change the url order', () => {
+        const testList = [1, 2, 3];
+        const urlBoxWrapper = shallow(<UrlBox
+            optionList={testList}
+            optionListHandler={(input) => input}
+        />);
+        expect(urlBoxWrapper.instance().moveDownOption()).toMatchObject([1, 2, 3]);
+    })
 
     it('=> With selected option, after running the move url down, suppose change the url order', () => {
         const testList = [1, 2, 3];
-        const screenLoopWrapper = shallow(<ScreenLoop />);
         const urlBoxWrapper = shallow(<UrlBox
             optionList={testList}
-            optionListHandler={screenLoopWrapper.instance().optionListHandler}
+            optionListHandler={(input) => input}
         />);
+        urlBoxWrapper.setState({ selectOption: 1 });
+        expect(urlBoxWrapper.instance().moveDownOption()).toMatchObject([2, 1, 3]);
+    })
 
-        urlBoxWrapper.setState({ selectOption: testList[0] });
-        urlBoxWrapper.instance().moveDownOption();
-        expect(screenLoopWrapper.state('optionList')).toMatchObject([2, 1, 3]);
+    it('=> select the last one, after running the move url down, suppose not change the url order', () => {
+        const testList = [1, 2, 3];
+        const urlBoxWrapper = shallow(<UrlBox
+            optionList={testList}
+            optionListHandler={(input) => input}
+        />);
+        urlBoxWrapper.setState({ selectOption: 3 });
+        expect(urlBoxWrapper.instance().moveDownOption()).toMatchObject([1,2,3]);
     })
 });
