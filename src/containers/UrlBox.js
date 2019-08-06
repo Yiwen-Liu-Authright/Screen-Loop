@@ -121,7 +121,7 @@ class urlBox extends Component {
                         </select>
                     </div>
                     <div className="col-1">
-                        <button className="btn btn-light" style={{ marginTop: '30px' }} onClick={this.moveUpOption}>Up</button>
+                        <button id = "upButton" className="btn btn-light" style={{ marginTop: '30px' }} onClick={this.moveUpOption}>Up</button>
                         <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.removeOption}>Delete</button>
                         <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.moveDownOption}>Down</button>
                     </div>
