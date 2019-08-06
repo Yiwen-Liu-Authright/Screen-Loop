@@ -25,7 +25,7 @@ class urlBox extends Component {
     moveUpOption = () => {
 
         const index = this.props.optionList.indexOf(this.state.selectOption);
-        if (index > 0) {
+        if (this.state.selectOption !== undefined && index > 0) {
             let nextOptionList = [...this.props.optionList];
             let temp = nextOptionList[index - 1];
             nextOptionList[index - 1] = nextOptionList[index];
@@ -34,12 +34,14 @@ class urlBox extends Component {
             // this.setState({
             //     optionList: nextOptionList
             // })
+            return nextOptionList;
         }
+        return this.props.optionList;
     }
 
     moveDownOption = () => {
         const index = this.props.optionList.indexOf(this.state.selectOption);
-        if ((this.state.selectOption !== undefined && index < this.props.optionList.length - 1)) {
+        if (this.state.selectOption !== undefined && index < this.props.optionList.length - 1) {
             let nextOptionList = [...this.props.optionList];
             let temp = nextOptionList[index + 1];
             nextOptionList[index + 1] = nextOptionList[index];
