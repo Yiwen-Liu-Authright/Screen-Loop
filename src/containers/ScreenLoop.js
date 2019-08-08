@@ -39,8 +39,6 @@ class ScreenLoop extends Component {
         console.log("Current Interval" + currentInterval);
         return (
             <Aux>
-                <div>{this.props.optionList}</div>
-                <div>{this.props.currentInterval}</div>
                 <Title headerTitle="Funny Screen" comments="A list of pages to be looped." />
                 <UrlBox
                     optionListHandler={this.optionListHandler}
