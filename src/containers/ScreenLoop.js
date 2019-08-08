@@ -34,10 +34,13 @@ class ScreenLoop extends Component {
         this.setState({ loop: value })
     }
 
-
     render() {
+        const { optionList, currentInterval } = this.props;
+        console.log("Current Interval" + currentInterval);
         return (
             <Aux>
+                <div>{this.props.optionList}</div>
+                <div>{this.props.currentInterval}</div>
                 <Title headerTitle="Funny Screen" comments="A list of pages to be looped." />
                 <UrlBox
                     optionListHandler={this.optionListHandler}
@@ -50,8 +53,8 @@ class ScreenLoop extends Component {
                     // loopHandler={this.loopHandler}
                     currentInterval={this.props.currentInterval}
                 />
-                {/* {console.log("Option List: " + this.state.optionList)}
-                {console.log("CurrentInterval: " + this.state.currentInterval)} */}
+                {/* {console.log("Option List: " + this.state.optionList)} */}
+                {/* {console.log("CurrentInterval: " + this.props.currentInterval)} */}
 
             </Aux>
         )
@@ -61,6 +64,7 @@ class ScreenLoop extends Component {
 
 const mapStateToProps = (state) => ({
     optionList: state.optionList,
+    currentInterval: state.currentInterval,
 })
 // connect is a hoc function, it takes a function as parameter and return the function
 export default connect(mapStateToProps)(ScreenLoop);
