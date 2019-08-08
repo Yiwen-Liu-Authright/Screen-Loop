@@ -3,7 +3,6 @@ import React from 'react';
 import ScreenLoop from './containers/ScreenLoop';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-//import './App.css';
 
 // Initial props
 const props = {
