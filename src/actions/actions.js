@@ -5,7 +5,7 @@ export const setInterval = newInterval => ({
     payload: { newInterval }
 });
 
-export const setOptionList = optionList => ({
+export const setOptionList = newOptionList => ({
     type: SET_OPTIONLIST,
-    payload: { optionList }
+    payload: { newOptionList }
 });

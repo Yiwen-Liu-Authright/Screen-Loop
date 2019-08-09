@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
 import Modal from '../components/UI/Modal/Modal';
 
@@ -48,5 +49,8 @@ class ImageDisplay extends Component{
     }
     
 }
-
-export default ImageDisplay;
+const mapStateToProps = (state) => ({
+    optionList: state.optionList,
+    currentInterval: state.currentInterval,
+})
+export default connect(mapStateToProps)(ImageDisplay);
