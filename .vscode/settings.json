@@ -1,0 +1,38 @@
+{
+    "fileheader.configObj": {
+        "createFileTime": true,
+        "language": {
+            "languagetest": {
+                "head": "/$$",
+                "middle": " $ @",
+                "end": " $/"
+            }
+        },
+        "autoAdd": false,
+        "autoAlready": true,
+        "annotationStr": {
+            "head": "/*",
+            "middle": " * @",
+            "end": " */",
+            "use": false
+        },
+        "headInsertLine": {
+            "php": 2
+        },
+        "beforeAnnotation": {},
+        "afterAnnotation": {},
+        "specialOptions": {},
+        "switch": {
+            "newlineAddAnnotation": true
+        },
+        "prohibitAutoAdd": [
+            "json"
+        ],
+        "moveCursor": true,
+        "dateFormat": "YYYY-MM-DD HH:mm:ss",
+        "atSymbol": "@",
+        "atSymbolObj": {},
+        "colon": ": ",
+        "colonObj": {}
+    }
+}

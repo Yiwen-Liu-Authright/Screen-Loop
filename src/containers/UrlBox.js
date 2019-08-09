@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class urlBox extends Component {
     state = {
-        // optionList: this.props.optionList,
         selectOption: undefined,
         newUrl: "",
         newInterval: "",
