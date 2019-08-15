@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { setInterval, setOptionList } from '../actions/actions';
 
-class urlBox extends Component {
+class UrlBox extends Component {
     state = {
         selectOption: undefined,
         newUrl: "",
         newInterval: "",
-        
     }
 
     handleChange = (event) => {
         this.setState({ selectOption: event.target.value });
-
     }
 
     handleChangeUrl = (event) => {
@@ -22,35 +22,34 @@ class urlBox extends Component {
     }
 
     moveUpOption = () => {
-
         const index = this.props.optionList.indexOf(this.state.selectOption);
         if (this.state.selectOption !== undefined && index > 0) {
+            console.log("Move Up Option");
             let nextOptionList = [...this.props.optionList];
             let temp = nextOptionList[index - 1];
             nextOptionList[index - 1] = nextOptionList[index];
             nextOptionList[index] = temp;
-            this.props.optionListHandler(nextOptionList);
-            // this.setState({
-            //     optionList: nextOptionList
-            // })
+            // dispatch setOptionList
+            this.props.setOptionList(nextOptionList);
+            // return for test
             return nextOptionList;
         }
+        // return for test
         return this.props.optionList;
     }
 
     moveDownOption = () => {
+
         const index = this.props.optionList.indexOf(this.state.selectOption);
         if (this.state.selectOption !== undefined && index < this.props.optionList.length - 1) {
             let nextOptionList = [...this.props.optionList];
             let temp = nextOptionList[index + 1];
             nextOptionList[index + 1] = nextOptionList[index];
             nextOptionList[index] = temp;
-            this.props.optionListHandler(nextOptionList);
+            // dispatch setOptionList
+            this.props.setOptionList(nextOptionList);
             // return for test
             return nextOptionList;
-            // this.setState({
-            //     optionList: nextOptionList
-            // })
         }
         // return for test
         return this.props.optionList;
@@ -61,9 +60,9 @@ class urlBox extends Component {
         let nextOptionList = [...this.props.optionList];
         if (index >= 0) {
             nextOptionList.splice(index, 1);
-            this.props.optionListHandler(nextOptionList)
+            // dispatch setOptionList
+            this.props.setOptionList(nextOptionList)
             this.setState({
-                // optionList: nextOptionList,
                 selectOption: undefined
             })
         }
@@ -74,9 +73,9 @@ class urlBox extends Component {
         if (regexp.test(this.state.newUrl)) {
             let nextOptionList = [...this.props.optionList];
             nextOptionList.push(this.state.newUrl);
-            this.props.optionListHandler(nextOptionList);
+            // dispatch setOptionList
+            this.props.setOptionList(nextOptionList);
             this.setState({
-                // optionList: nextOptionList,
                 newUrl: ""
             })
         }
@@ -91,13 +90,13 @@ class urlBox extends Component {
         }
         else if (!isNaN(this.state.newInterval)) {
             let temp = this.state.newInterval;
-            // Send the Current Interval back to ScreenLoop
-            this.props.currentIntervalHandler(temp);
+            // dispatch setInterval
+            this.props.setInterval(temp);
             this.setState({
                 newInterval: ""
             })
 
-        } 
+        }
         else {
             alert("Not a number");
         }
@@ -122,7 +121,7 @@ class urlBox extends Component {
                         </select>
                     </div>
                     <div className="col-1">
-                        <button id = "upButton" className="btn btn-light" style={{ marginTop: '30px' }} onClick={this.moveUpOption}>Up</button>
+                        <button id="upButton" className="btn btn-light" style={{ marginTop: '30px' }} onClick={this.moveUpOption}>Up</button>
                         <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.removeOption}>Delete</button>
                         <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.moveDownOption}>Down</button>
                     </div>
@@ -169,4 +168,15 @@ class urlBox extends Component {
 
 }
 
-export default urlBox;
+const mapStateToProps = (state) => ({
+    optionList: state.optionList,
+    currentInterval: state.currentInterval,
+})
+
+const mapDispatchToProps = {
+    setInterval,
+    setOptionList,
+}
+
+// connect is a hoc function, it takes a function as parameter and return the function
+export default connect(mapStateToProps, mapDispatchToProps)(UrlBox);

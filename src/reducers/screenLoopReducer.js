@@ -1,4 +1,4 @@
-import { SET_INTERVAL } from '../actions/actionTypes';
+import { SET_INTERVAL, SET_OPTIONLIST } from '../actions/actionTypes';
 // Initial states
 const initialState = {
     currentInterval: 1,
@@ -18,11 +18,18 @@ export default function (state = initialState, action) {
     switch (action.type) {
         case SET_INTERVAL:
             const { newInterval } = action.payload;
-            console.log("Inside set interval reducer");
+            // console.log("Inside set interval reducer");
             return {
                 ...state,
                 currentInterval: newInterval,
             };
+        case SET_OPTIONLIST:
+            const { newOptionList } = action.payload;
+            // console.log("Inside set option list reducer");
+            return {
+                ...state,
+                optionList: newOptionList,
+            }
         default:
             return state;
     }
