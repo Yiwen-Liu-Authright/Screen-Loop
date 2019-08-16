@@ -1,4 +1,4 @@
-import { SET_INTERVAL, SET_OPTIONLIST } from '../actions/actionTypes';
+import { SET_INTERVAL, SET_OPTIONLIST, SET_IMAGELIST, SET_VIDEOLIST, SET_PPTLIST } from '../actions/actionTypes';
 // Initial states
 const initialState = {
     currentInterval: 1,
@@ -12,10 +12,22 @@ const initialState = {
     //     "//placekitten.com/4000/3000",
     //     "//placekitten.com/800/1200",
     //     "//placekitten.com/1500/1500"],
-    optionList: ["https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+    imageList: [
+        "//placekitten.com/1500/500",
         "//placekitten.com/4000/3000",
         "//placekitten.com/800/1200",
-        "//placekitten.com/1500/1500"],
+        "//placekitten.com/1500/1500",
+        "https://www.w3schools.com/w3css/img_lights.jpg"
+    ],
+    videoList: [
+        "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+        "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
+        
+    ],
+    pptList: [
+        "http://www.pdf995.com/samples/pdf.pdf"
+    ],
+    optionList: ["https://media.w3.org/2010/05/sintel/trailer_hd.mp4"],
 };
 
 export default function (state = initialState, action) {
@@ -33,6 +45,27 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 optionList: newOptionList,
+            }
+        case SET_IMAGELIST:
+            const { newImageList } = action.payload;
+            // console.log("Inside set option list reducer");
+            return {
+                ...state,
+                imageList: newImageList,
+            }
+        case SET_VIDEOLIST:
+            const { newVideoList } = action.payload;
+            // console.log("Inside set option list reducer");
+            return {
+                ...state,
+                videoList: newVideoList,
+            }
+        case SET_PPTLIST:
+            const { newPptList } = action.payload;
+            // console.log("Inside set option list reducer");
+            return {
+                ...state,
+                pptList: newPptList,
             }
         default:
             return state;
