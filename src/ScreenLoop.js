@@ -7,31 +7,29 @@ import Title from './components/UI/Title';
 import UrlBox from './containers/UrlBox';
 import Aux from './hoc/Aux/Aux';
 import ImageDisplay from './containers/ImageDisplay';
+import Toolbar from './components/Navigation/Toolbar/Toolbar';
 
 
 class ScreenLoop extends React.Component {
-
     render() {
         const currentInterval = this.props.currentInterval;
         console.log("Current Interval: " + currentInterval);
         return (
             <Aux>
-                <div className="App">
-                    <div className="jumbotron jumbotron-fluid" style={{ marginTop: "100px" }}>
+                <Toolbar />
+                    <div className="jumbotron jumbotron-fluid" style={{ marginTop: "0px" }}>
                         <div className="container">
-                            {/* Add Provider */}
-                            <Provider store={store}>
+                            {/* Add Provider */}                          
+                            <Provider store={store}>                               
                                 <Title
                                     headerTitle="Screen Loop"
-                                    comments="A list of pages to be looped."
+                                    comments="A list of Images to be looped."
                                 />
                                 <UrlBox />
                                 <ImageDisplay />
                             </Provider>
                         </div>
                     </div>
-                </div>
-
             </Aux>
         )
 
