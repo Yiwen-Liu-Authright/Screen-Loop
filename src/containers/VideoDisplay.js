@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
-import Modal_img from '../components/UI/Modal/ImageModal';
-import ImageBox from './ImageBox';
+import Modal_vid from '../components/UI/Modal/VideoModal';
+import VideoBox from './VideoBox';
 
-class ImageDisplay extends Component{
+class VideoDisplay extends Component{
     state = {
         currentPic: null,
         showingPics: false,
@@ -19,16 +19,16 @@ class ImageDisplay extends Component{
 
     navigate = () => {
         let i = this.state.index;
-        let imageList = [...this.props.imageList];
-        this.setState({currentPic:imageList[i]});
+        let videoList = [...this.props.videoList];
+        this.setState({currentPic:videoList[i]});
 
         const loop = setInterval(() => {
             i++;
-            if (i >= imageList.length) {
+            if (i >= videoList.length) {
                 i = 0;
             }
             this.setState({
-                currentPic:imageList[i],
+                currentPic:videoList[i],
                 index:i,
             });
 
@@ -43,8 +43,8 @@ class ImageDisplay extends Component{
     render() {
         return(
             <Aux>
-                <ImageBox />
-                <Modal_img show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
+                <VideoBox />
+                <Modal_vid show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
                 <button className="btn btn-dark btn-lg btn-block" onClick = {this.navigate}>Launch</button>
             </Aux>
         )
@@ -52,7 +52,7 @@ class ImageDisplay extends Component{
     
 }
 const mapStateToProps = (state) => ({
-    imageList: state.imageList,
+    videoList: state.videoList,
     currentInterval: state.currentInterval,
 })
-export default connect(mapStateToProps)(ImageDisplay);
+export default connect(mapStateToProps)(VideoDisplay);
