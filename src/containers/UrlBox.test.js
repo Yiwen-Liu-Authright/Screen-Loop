@@ -44,3 +44,33 @@ describe('<UrlBox/> Move Url Down', () => {
     //     expect(downClicked).toHaveBeenCalled();
     // })
 });
+
+describe('<UrlBox /> Move Up Botton', () => {
+    it('should...', () => {
+        const wrapperUrl = shallow(<UrlBox
+            optionList={[1, 2, 3]}
+            optionListHandler={() => { }}
+        />);
+        wrapperUrl.setState({ selectOption: 2 });
+        // const result = wrapperUrl.instance().moveUpOption();
+        expect(wrapperUrl.instance().moveUpOption()).toEqual([2, 1, 3]);
+    });
+
+    it('should not change if no option select', () => {
+        const wrapperUrl = shallow(<UrlBox
+            optionList={[1, 2, 3]}
+            optionListHandler={() => { }}
+        />);
+        wrapperUrl.setState({ selectOption: undefined });
+        expect(wrapperUrl.instance().moveUpOption()).toEqual([1, 2, 3]);
+    });
+
+    it('should not change if the first option select', () => {
+        const wrapperUrl = shallow(<UrlBox
+            optionList={[1, 2, 3]}
+            optionListHandler={() => { }}
+        />);
+        wrapperUrl.setState({ selectOption: 1 });
+        expect(wrapperUrl.instance().moveUpOption()).toEqual([1, 2, 3]);
+    });
+});
