@@ -1,10 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 
 import ScreenLoop from './ScreenLoop';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<ScreenLoop />, document.getElementById('root'));
+const screenloop = (
+    <BrowserRouter>
+        <ScreenLoop />
+    </BrowserRouter>
+)
+
+ReactDOM.render(screenloop, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

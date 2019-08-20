@@ -1,12 +1,13 @@
 import React from 'react';
-
 import store from './store';
 import { Provider } from 'react-redux';
+import { Route, Switch } from 'react-router-dom';
 
 import Title from './components/UI/Title';
-import UrlBox from './containers/UrlBox';
 import Aux from './hoc/Aux/Aux';
 import ImageDisplay from './containers/ImageDisplay';
+import VideoDisplay from './containers/VideoDisplay';
+import PptDisplay from './containers/PptDisplay';
 import Toolbar from './components/Navigation/Toolbar/Toolbar';
 
 
@@ -23,10 +24,13 @@ class ScreenLoop extends React.Component {
                             <Provider store={store}>                               
                                 <Title
                                     headerTitle="Screen Loop"
-                                    comments="A list of Images to be looped."
+                                    comments="A list of resources to be looped."
                                 />
-                                <UrlBox />
-                                <ImageDisplay />
+                                <Switch>
+                                    <Route path="/Images" exact component={ImageDisplay} />
+                                    <Route path="/Videos" component={VideoDisplay} />
+                                    <Route path="/PowerPoint" component={PptDisplay} />
+                                </Switch>
                             </Provider>
                         </div>
                     </div>
