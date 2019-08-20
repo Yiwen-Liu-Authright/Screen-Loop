@@ -6,7 +6,7 @@ import VideoBox from './VideoBox';
 
 class VideoDisplay extends Component{
     state = {
-        currentPic: null,
+        currentVideo: null,
         showingPics: false,
         index: 0,
         loop: undefined,
@@ -18,24 +18,24 @@ class VideoDisplay extends Component{
     }
 
     navigate = () => {
-        let i = this.state.index;
-        let videoList = [...this.props.videoList];
-        this.setState({currentPic:videoList[i]});
+        // let i = this.state.index;
+        // let videoList = [...this.props.videoList];
+        // this.setState({currentVideo:videoList[i]});
 
-        const loop = setInterval(() => {
-            i++;
-            if (i >= videoList.length) {
-                i = 0;
-            }
-            this.setState({
-                currentPic:videoList[i],
-                index:i,
-            });
+        // const loop = () => {
+        //     i++;
+        //     if (i >= videoList.length) {
+        //         i = 0;
+        //     }
+        //     this.setState({
+        //         currentVideo:videoList[i],
+        //         index:i,
+        //     });
 
-        }, this.props.currentInterval * 1000);
+        // };
 
         this.setState({
-            loop: loop,
+            // loop: loop,
             showingPics: true,
         })
     }
@@ -45,7 +45,7 @@ class VideoDisplay extends Component{
             <Aux>
                 <h1 className = "lead">Video Box</h1>
                 <VideoBox />
-                <VideoModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
+                <VideoModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.props.videoList[0]} />
                 <button className="btn btn-dark btn-lg btn-block" onClick = {this.navigate}>Launch</button>
             </Aux>
         )

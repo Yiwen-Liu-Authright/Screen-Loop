@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
 import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 import classes from '../Modal.module.css';
@@ -29,4 +31,7 @@ const pptModal = (props) => {
     );
 }
 
-export default pptModal;
+const mapStateToProps = (state) => ({
+    imageHolder: state.imageHolder
+})
+export default connect(mapStateToProps)(pptModal);
