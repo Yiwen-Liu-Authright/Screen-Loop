@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
-import Modal_vid from '../components/UI/Modal/VideoModal';
+import VideoModal from '../components/UI/Modal/VideoModal';
 import VideoBox from './VideoBox';
 
 class VideoDisplay extends Component{
@@ -43,8 +43,9 @@ class VideoDisplay extends Component{
     render() {
         return(
             <Aux>
+                <h1 className = "lead">Video Box</h1>
                 <VideoBox />
-                <Modal_vid show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
+                <VideoModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
                 <button className="btn btn-dark btn-lg btn-block" onClick = {this.navigate}>Launch</button>
             </Aux>
         )

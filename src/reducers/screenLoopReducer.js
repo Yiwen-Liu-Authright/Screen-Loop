@@ -20,9 +20,7 @@ const initialState = {
         "https://www.w3schools.com/w3css/img_lights.jpg"
     ],
     videoList: [
-        "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
-        "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",
-        
+        "https://media.w3.org/2010/05/sintel/trailer_hd.mp4",   
     ],
     pptList: [
         "http://www.pdf995.com/samples/pdf.pdf"
