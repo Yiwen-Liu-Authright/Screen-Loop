@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setVideoList } from '../actions/actions';
+import axios from '../axios-list'
 
 class VideoBox extends Component {
+    componentWillMount() {
+        axios.get('https://screen-loops.firebaseio.com/initialState/videoList.json')
+        .then(response => {
+            this.props.setVideoList(response.data);
+        })
+    }
+
     state = {
         selectVideo: undefined,
         newVideo: "",

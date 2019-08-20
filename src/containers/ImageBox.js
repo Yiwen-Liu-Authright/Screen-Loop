@@ -1,8 +1,24 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setImageList } from '../actions/actions';
+import axios from '../axios-list'
 
 class ImageBox extends Component {
+    componentWillMount() {
+        axios.get('https://screen-loops.firebaseio.com/initialState/imageList.json')
+        .then(response => {
+            this.props.setImageList(response.data);
+        })
+    }
+
+    // componentDidUpdate() {
+    //     axios.put('https://screen-loops.firebaseio.com/initialState/imageList.json', this.state.imageList)
+    //     .then(response => {
+    //         this.props.setImageList(response.data);
+    //     })
+    // }
+    
+
     state = {
         selectImage: undefined,
         newImage: "",
@@ -101,6 +117,8 @@ class ImageBox extends Component {
             alert("Not a number");
         }
     }
+
+    
 
     render() {
         return (

@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setPptList } from '../actions/actions';
+import axios from '../axios-list'
 
 class PptBox extends Component {
+    componentWillMount() {
+        axios.get('https://screen-loops.firebaseio.com/initialState/pptList.json')
+        .then(response => {
+            this.props.setPptList(response.data);
+        })
+    }
+
     state = {
         selectPpt: undefined,
         newPpt: "",
