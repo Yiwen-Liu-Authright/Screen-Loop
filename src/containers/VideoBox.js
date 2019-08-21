@@ -10,6 +10,13 @@ class VideoBox extends Component {
             this.props.setVideoList(response.data);
         })
     }
+    // update videolist button
+    listupdateHandler = () => {
+        let updatedlist = [...this.props.videoList]
+        axios.put('https://screen-loops.firebaseio.com/initialState/videoList.json', updatedlist)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+    }
 
     state = {
         selectVideo: undefined,
@@ -139,7 +146,7 @@ class VideoBox extends Component {
                 <br></br>
 
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-3">
                         <div className="form-group">
                             <input type="url"
                                 className="form-control"
@@ -153,8 +160,8 @@ class VideoBox extends Component {
                     <div className="col-2">
                         <button className="btn btn-light btn-block" onClick={this.addVideo}>Add URL</button>
                     </div>
-                    <div className="col-1">
-                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
+                    <div className="col-2">
+                        <button className="btn btn-light btn-block" onClick={this.listupdateHandler}>Update Playlist</button>
                     </div>
                     <div className="col-2">
                         <input
@@ -165,6 +172,9 @@ class VideoBox extends Component {
                             value={this.state.newInterval}
                             onChange={this.handleInterval}
                         />
+                    </div>
+                    <div className="col-1">
+                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
                     </div>
                     <div className="col-2">
                         <p>current interval: {this.props.currentInterval}s</p>
