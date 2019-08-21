@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
 import Modal_img from '../components/UI/Modal/ImageModal';
 import ImageBox from './ImageBox';
 
-class ImageDisplay extends Component{
+class ImageDisplay extends Component {
     state = {
         currentPic: null,
         showingPics: false,
@@ -13,14 +13,14 @@ class ImageDisplay extends Component{
     }
 
     lightBoxCloseHandler = () => {
-        this.setState({showingPics: false});
+        this.setState({ showingPics: false });
         clearInterval(this.state.loop);
     }
 
     navigate = () => {
         let i = this.state.index;
         let imageList = [...this.props.imageList];
-        this.setState({currentPic:imageList[i]});
+        this.setState({ currentPic: imageList[i] });
 
         const loop = setInterval(() => {
             i++;
@@ -28,8 +28,8 @@ class ImageDisplay extends Component{
                 i = 0;
             }
             this.setState({
-                currentPic:imageList[i],
-                index:i,
+                currentPic: imageList[i],
+                index: i,
             });
 
         }, this.props.currentInterval * 1000);
@@ -41,15 +41,15 @@ class ImageDisplay extends Component{
     }
 
     render() {
-        return(
+        return (
             <Aux>
                 <ImageBox />
                 <Modal_img show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
-                <button className="btn btn-dark btn-lg btn-block" onClick = {this.navigate}>Launch</button>
+                <button className="btn btn-dark btn-lg btn-block" onClick={this.navigate}>Launch</button>
             </Aux>
         )
     }
-    
+
 }
 const mapStateToProps = (state) => ({
     imageList: state.imageList,

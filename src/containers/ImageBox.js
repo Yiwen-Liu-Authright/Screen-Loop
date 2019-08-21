@@ -6,9 +6,9 @@ import axios from '../axios-list'
 class ImageBox extends Component {
     componentWillMount() {
         axios.get('https://screen-loops.firebaseio.com/initialState/imageList.json')
-        .then(response => {
-            this.props.setImageList(response.data);
-        })
+            .then(response => {
+                this.props.setImageList(response.data);
+            })
     }
     // update imagelist button
     listupdateHandler = () => {
@@ -116,16 +116,16 @@ class ImageBox extends Component {
         }
     }
 
-    
+
 
     render() {
         return (
             <div className="imageBox" >
                 <div className="row">
-                    <div className="col-11">
+                    <div className="col-10">
                         <select
                             className="custom-select"
-                            size="10"
+                            size="9"
                             value={this.state.selectImage}
                             onChange={this.handleChange}
                         >
@@ -135,14 +135,17 @@ class ImageBox extends Component {
                             }
                         </select>
                     </div>
-                    <div className="col-1">
-                        <button id="upButton" className="btn btn-light" style={{ marginTop: '30px' }} onClick={this.moveUpImage}>Up</button>
-                        <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.removeImage}>Delete</button>
-                        <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.moveDownImage}>Down</button>
+                    <div className="col-2">
+                        <button className="btn btn-light btn-block" onClick={this.moveUpImage}>Up</button>
+                        <button className="btn btn-light btn-block" onClick={this.removeImage}>Delete</button>
+                        <button className="btn btn-light btn-block" onClick={this.moveDownImage}>Down</button>
+                        <button className="btn btn-dark btn-block" onClick={this.listupdateHandler}>Update</button>
+                    </div>
+                    <div className="col-2">
+
                     </div>
                 </div>
 
-                <br></br>
                 <br></br>
 
                 <div className="row">
@@ -160,24 +163,18 @@ class ImageBox extends Component {
                     <div className="col-2">
                         <button className="btn btn-light btn-block" onClick={this.addImage}>Add URL</button>
                     </div>
-                    <div className="col-2">
-                        <button className="btn btn-light btn-block" onClick={this.listupdateHandler}>Update Playlist</button>
-                    </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <input
                             type="text"
                             className="form-control mb-2 mr-sm-2"
                             id="interval"
-                            placeholder="Set Interval"
+                            placeholder={"Current Interval: " + this.props.currentInterval + "s"}
                             value={this.state.newInterval}
                             onChange={this.handleInterval}
                         />
                     </div>
-                    <div className="col-1">
-                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
-                    </div>
                     <div className="col-2">
-                        <p>current interval: {this.props.currentInterval}s</p>
+                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set Interval</button>
                     </div>
                 </div>
             </div >

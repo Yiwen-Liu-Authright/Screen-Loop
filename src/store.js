@@ -1,4 +1,4 @@
 import {createStore} from "redux";
-import screenLoop from "./reducers/screenLoopReducer";
+import screenLoop from "./reducers/UrlBoxReducer";
 
 export default createStore(screenLoop);
