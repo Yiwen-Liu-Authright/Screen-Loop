@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setImageList } from '../actions/actions';
+import axios from '../axios-list'
 
 class ImageBox extends Component {
+    componentWillMount() {
+        axios.get('https://screen-loops.firebaseio.com/initialState/imageList.json')
+        .then(response => {
+            this.props.setImageList(response.data);
+        })
+    }
+    // update imagelist button
+    listupdateHandler = () => {
+        let updatedlist = [...this.props.imageList]
+        axios.put('https://screen-loops.firebaseio.com/initialState/imageList.json', updatedlist)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+    }
+
     state = {
         selectImage: undefined,
         newImage: "",
@@ -39,7 +54,6 @@ class ImageBox extends Component {
     }
 
     moveDownImage = () => {
-
         const index = this.props.imageList.indexOf(this.state.selectImage);
         if (this.state.selectImage !== undefined && index < this.props.imageList.length - 1) {
             let nextImageList = [...this.props.imageList];
@@ -102,6 +116,8 @@ class ImageBox extends Component {
         }
     }
 
+    
+
     render() {
         return (
             <div className="imageBox" >
@@ -115,7 +131,6 @@ class ImageBox extends Component {
                         >
                             {this.props.imageList.map((image, index) => {
                                 return <option key={image} value={image}>{image}</option>
-
                             })}
                             }
                         </select>
@@ -131,7 +146,7 @@ class ImageBox extends Component {
                 <br></br>
 
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-3">
                         <div className="form-group">
                             <input type="url"
                                 className="form-control"
@@ -145,8 +160,8 @@ class ImageBox extends Component {
                     <div className="col-2">
                         <button className="btn btn-light btn-block" onClick={this.addImage}>Add URL</button>
                     </div>
-                    <div className="col-1">
-                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
+                    <div className="col-2">
+                        <button className="btn btn-light btn-block" onClick={this.listupdateHandler}>Update Playlist</button>
                     </div>
                     <div className="col-2">
                         <input
@@ -157,6 +172,9 @@ class ImageBox extends Component {
                             value={this.state.newInterval}
                             onChange={this.handleInterval}
                         />
+                    </div>
+                    <div className="col-1">
+                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
                     </div>
                     <div className="col-2">
                         <p>current interval: {this.props.currentInterval}s</p>

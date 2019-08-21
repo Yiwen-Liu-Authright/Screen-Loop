@@ -1,8 +1,23 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setPptList } from '../actions/actions';
+import axios from '../axios-list'
 
 class PptBox extends Component {
+    componentWillMount() {
+        axios.get('https://screen-loops.firebaseio.com/initialState/pptList.json')
+        .then(response => {
+            this.props.setPptList(response.data);
+        })
+    }
+    // update pptlist button
+    listupdateHandler = () => {
+        let updatedlist = [...this.props.pptList]
+        axios.put('https://screen-loops.firebaseio.com/initialState/pptList.json', updatedlist)
+            .then(response => console.log(response))
+            .catch(error => console.log(error));
+    }
+
     state = {
         selectPpt: undefined,
         newPpt: "",
@@ -131,7 +146,7 @@ class PptBox extends Component {
                 <br></br>
 
                 <div className="row">
-                    <div className="col-5">
+                    <div className="col-3">
                         <div className="form-group">
                             <input type="url"
                                 className="form-control"
@@ -145,8 +160,8 @@ class PptBox extends Component {
                     <div className="col-2">
                         <button className="btn btn-light btn-block" onClick={this.addPpt}>Add URL</button>
                     </div>
-                    <div className="col-1">
-                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
+                    <div className="col-2">
+                        <button className="btn btn-light btn-block" onClick={this.listupdateHandler}>Update Playlist</button>
                     </div>
                     <div className="col-2">
                         <input
@@ -157,6 +172,9 @@ class PptBox extends Component {
                             value={this.state.newInterval}
                             onChange={this.handleInterval}
                         />
+                    </div>
+                    <div className="col-1">
+                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
                     </div>
                     <div className="col-2">
                         <p>current interval: {this.props.currentInterval}s</p>

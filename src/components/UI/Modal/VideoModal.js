@@ -12,6 +12,7 @@ class Modal_vid extends Component {
         //const youtuberegexp = /^(http\:\/\/)?(youtube\.com|youtu\.be)+$/;
         if (vidregexp.test(this.props.imgSrc)) {
             console.log("Here is the video");
+            console.log(this.props.imgSrc);
             renderItem = <video
             className={classes.Modal}
                 style={{
