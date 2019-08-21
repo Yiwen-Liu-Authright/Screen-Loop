@@ -18,10 +18,11 @@ class ScreenLoop extends React.Component {
         return (
             <Aux>
                 <Toolbar />
+                <Aux>
                     <div className="jumbotron jumbotron-fluid" style={{ marginTop: "0px" }}>
                         <div className="container">
-                            {/* Add Provider */}                          
-                            <Provider store={store}>                               
+                            {/* Add Provider */}
+                            <Provider store={store}>
                                 <Title
                                     headerTitle="Screen Loop"
                                     comments="A list of resources to be looped."
@@ -29,11 +30,13 @@ class ScreenLoop extends React.Component {
                                 <Switch>
                                     <Route path="/Images" exact component={ImageDisplay} />
                                     <Route path="/Videos" component={VideoDisplay} />
-                                    <Route path="/PowerPoint" component={PptDisplay} />
+                                    <Route path="/PowerPoints" component={PptDisplay} />
                                 </Switch>
                             </Provider>
                         </div>
                     </div>
+                </Aux>
+
             </Aux>
         )
 

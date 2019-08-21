@@ -1,44 +1,34 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { connect } from 'react-redux';
+
 import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
-import classes from './Modal.module.css';
+import classes from '../Modal.module.css';
 
-class Modal_img extends Component {
-
-    render() {
-        let renderItem = null
-        const imgregexp = /^http:?.+\.(jpg|png|jpeg)$/;
-        if (imgregexp.test(this.props.imgSrc)) {
-            renderItem = <img
-                className={classes.Modal}
-                src={this.props.imgSrc}
-                alt="not show"
-                style={{
-                    transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-                    opacity: this.props.show ? '1' : '0',
-                }}>
-            </img>
-        }
-        else {
-            console.log("Not image and video");
-            renderItem = <img
-                className={classes.Modal}
-                src={'https://i.ytimg.com/vi/L1tx-wAI6Nw/maxresdefault.jpg'}
-                alt="not show"
-                style={{
-                    transform: this.props.show ? 'translateY(0)' : 'translateY(-100vh)',
-                    opacity: this.props.show ? '1' : '0',
-                }}>
-            </img>
-        }
-
-        return (
-            <Aux>
-                <Backdrop show={this.props.show} clicked={this.props.modalClosed} />
-                {renderItem }
-            </Aux>
-        );
+const imageModal = (props) => {
+    const imgRegExp = /^http:?.+\.(jpg|png|jpeg)$/;
+    let imageSrc = props.imageHolder;
+    if (props.imgSrc != null && imgRegExp.test(props.imgSrc)) {
+        imageSrc = props.imgSrc;
     }
+
+    return (
+        <Aux>
+            <Backdrop show={props.show} clicked={props.modalClosed} />
+            <img
+                className={classes.Modal}
+                src={imageSrc}
+                alt="not show"
+                style={{
+                    transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
+                    opacity: props.show ? '1' : '0',
+                }}>
+            </img>
+        </Aux>
+    )
 }
 
-export default Modal_img;
+const mapStateToProps = (state) => ({
+    imageHolder: state.imageHolder
+})
+export default connect(mapStateToProps)(imageModal);

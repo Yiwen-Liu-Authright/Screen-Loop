@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
-import Modal_img from '../components/UI/Modal/ImageModal';
+import ImageModal from '../components/UI/Modal/ImageModal';
 import ImageBox from './ImageBox';
 
-class ImageDisplay extends Component {
+class ImageDisplay extends React.Component {
     state = {
         currentPic: null,
         showingPics: false,
@@ -43,8 +43,10 @@ class ImageDisplay extends Component {
     render() {
         return (
             <Aux>
+                <h1 className = "lead">Image Box</h1>
                 <ImageBox />
-                <Modal_img show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
+
+                <ImageModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
                 <button className="btn btn-dark btn-lg btn-block" onClick={this.navigate}>Launch</button>
             </Aux>
         )

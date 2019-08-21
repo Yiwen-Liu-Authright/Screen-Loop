@@ -1,30 +1,31 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import ReactPlayer from 'react-player'
+import { connect } from 'react-redux';
+
 import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 import classes from '../Modal.module.css';
 
-const videoModal = (props) => {
-
+const pptModal = (props) => {
 
     return (
         <Aux>
-            {console.log(props.imgSrc)}
             <Backdrop show={props.show} clicked={props.modalClosed} />
-            <video controls autoPlay
+            <iframe
+                title="PowerPointModal"
                 className={classes.Modal}
+                src={props.imgSrc + "#toolbar=0"}
+                width="100%" height="500px"
                 style={{
                     transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
                     opacity: props.show ? '1' : '0',
-                }}>
-                <source src={props.imgSrc}></source>
-            </video>
+                }}
+            />;
+    
         </Aux>
     );
 }
 
-// const mapStateToProps = (state) => ({
-//     imageHolder: state.imageHolder
-// })
-export default videoModal;
+const mapStateToProps = (state) => ({
+    imageHolder: state.imageHolder
+})
+export default connect(mapStateToProps)(pptModal);
