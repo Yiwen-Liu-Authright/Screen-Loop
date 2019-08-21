@@ -3,13 +3,9 @@ import { SET_INTERVAL, SET_OPTIONLIST, SET_IMAGELIST, SET_VIDEOLIST, SET_PPTLIST
 // Initial states
 const initialState = {
     currentInterval: 1,
-    imageList: ["http://static.runoob.com/images/demo/demo1.jpg",
-        "http://static.runoob.com/images/demo/demo2.jpg",
-        "http://static.runoob.com/images/demo/demo3.jpg",
-        "http://static.runoob.com/images/demo/demo4.jpg"],
-    videoList: ["https://media.w3.org/2010/05/sintel/trailer_hd.mp4",],
-    pptList: ["http://www.pdf995.com/samples/pdf.pdf"],
-    optionList: [],
+    imageList: [],
+    videoList: [],
+    pptList: [],
     imageHolder: 'https://i.ytimg.com/vi/L1tx-wAI6Nw/maxresdefault.jpg',
 };
 

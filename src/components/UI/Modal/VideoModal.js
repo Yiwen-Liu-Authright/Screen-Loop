@@ -6,11 +6,6 @@ import Backdrop from '../Backdrop/Backdrop';
 import classes from '../Modal.module.css';
 
 const videoModal = (props) => {
-    // let videoSrc = props.imageHolder;
-    // const videoRegExp = /^https?.+\.(swf|mp4|avi|flv|mpg|rm|mov|wav|asf|3gp|mkv|rmvb)$/;
-    // if (props.imgSrc != null && videoRegExp.test(props.imgSrc)) {
-    //     videoSrc = props.imgSrc;
-    // }
 
     return (
         <Aux>
