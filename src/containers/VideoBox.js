@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setVideoList } from '../actions/actions';
 import axios from '../axios-list'
 
-class VideoBox extends Component {
+class VideoBox extends React.Component {
     componentWillMount() {
         axios.get('https://screen-loops.firebaseio.com/initialState/videoList.json')
         .then(response => {
@@ -119,30 +119,32 @@ class VideoBox extends Component {
 
     render() {
         return (
-            <div className="urlBox" >
+            <div className="Video Box" >
                 <div className="row">
-                    <div className="col-11">
+                    <div className="col-10">
                         <select
                             className="custom-select"
-                            size="10"
-                            value={this.state.selectVideo}
+                            size="9"
+                            value={this.state.selectImage}
                             onChange={this.handleChange}
                         >
-                            {this.props.videoList.map((video, index) => {
-                                return <option key={video} value={video}>{video}</option>
-
+                            {this.props.videoList.map((image, index) => {
+                                return <option key={image} value={image}>{image}</option>
                             })}
                             }
                         </select>
                     </div>
-                    <div className="col-1">
-                        <button id="upButton" className="btn btn-light" style={{ marginTop: '30px' }} onClick={this.moveUpVideo}>Up</button>
-                        <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.removeVideo}>Delete</button>
-                        <button className="btn btn-light" style={{ marginTop: "30px" }} onClick={this.moveDownVideo}>Down</button>
+                    <div className="col-2">
+                        <button className="btn btn-light btn-block" onClick={this.moveUpImage}>Up</button>
+                        <button className="btn btn-light btn-block" onClick={this.removeImage}>Delete</button>
+                        <button className="btn btn-light btn-block" onClick={this.moveDownImage}>Down</button>
+                        <button className="btn btn-dark btn-block" onClick={this.listupdateHandler}>Update</button>
+                    </div>
+                    <div className="col-2">
+
                     </div>
                 </div>
 
-                <br></br>
                 <br></br>
 
                 <div className="row">
@@ -150,34 +152,28 @@ class VideoBox extends Component {
                         <div className="form-group">
                             <input type="url"
                                 className="form-control"
-                                id="new-video"
-                                placeholder="Add a new url"
-                                value={this.state.newVideo}
-                                onChange={this.handleChangeVideo}
+                                id="new-image"
+                                placeholder="Add a new video source"
+                                value={this.state.newImage}
+                                onChange={this.handleChangeImage}
                             />
                         </div>
                     </div>
                     <div className="col-2">
-                        <button className="btn btn-light btn-block" onClick={this.addVideo}>Add URL</button>
+                        <button className="btn btn-light btn-block" onClick={this.addImage}>Add URL</button>
                     </div>
-                    <div className="col-2">
-                        <button className="btn btn-light btn-block" onClick={this.listupdateHandler}>Update Playlist</button>
-                    </div>
-                    <div className="col-2">
+                    <div className="col-3">
                         <input
                             type="text"
                             className="form-control mb-2 mr-sm-2"
                             id="interval"
-                            placeholder="Set Interval"
+                            placeholder={"Current Interval: " + this.props.currentInterval + "s"}
                             value={this.state.newInterval}
                             onChange={this.handleInterval}
                         />
                     </div>
-                    <div className="col-1">
-                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set</button>
-                    </div>
                     <div className="col-2">
-                        <p>current interval: {this.props.currentInterval}s</p>
+                        <button className="btn btn-light btn-block" onClick={this.updateInterval}>Set Interval</button>
                     </div>
                 </div>
             </div >

@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
 import PptModal from '../components/UI/Modal/PptModal';
 import PptBox from './PptBox';
 
-class PptDisplay extends Component{
+class PptDisplay extends React.Component{
     state = {
         currentPic: null,
         showingPics: false,
@@ -46,7 +46,11 @@ class PptDisplay extends Component{
                 <h1 className = "lead">Powerpoint Box</h1>
                 <PptBox />
                 <PptModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
-                <button className="btn btn-dark btn-lg btn-block" onClick = {this.navigate}>Launch</button>
+                <div className="row">
+                    <div className="col-10">
+                        <button className="btn btn-dark btn-lg btn-block" onClick={this.navigate}>Launch</button>
+                    </div>
+                </div>
             </Aux>
         )
     }

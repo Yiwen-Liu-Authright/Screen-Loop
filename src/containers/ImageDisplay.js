@@ -43,11 +43,14 @@ class ImageDisplay extends React.Component {
     render() {
         return (
             <Aux>
-                <h1 className = "lead">Image Box</h1>
+                <h1 className="lead">Image Box</h1>
                 <ImageBox />
-
                 <ImageModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
-                <button className="btn btn-dark btn-lg btn-block" onClick={this.navigate}>Launch</button>
+                <div className="row">
+                    <div className="col-10">
+                        <button className="btn btn-dark btn-lg btn-block" onClick={this.navigate}>Launch</button>
+                    </div>
+                </div>
             </Aux>
         )
     }

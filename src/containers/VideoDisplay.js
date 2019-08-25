@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
 import VideoModal from '../components/UI/Modal/VideoModal';
 import VideoBox from './VideoBox';
 
-class VideoDisplay extends Component{
+class VideoDisplay extends React.Component{
     state = {
         currentVideo: null,
         showingPics: false,
@@ -46,7 +46,11 @@ class VideoDisplay extends Component{
                 <h1 className = "lead">Video Box</h1>
                 <VideoBox />
                 <VideoModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.props.videoList[0]} />
-                <button className="btn btn-dark btn-lg btn-block" onClick = {this.navigate}>Launch</button>
+                <div className="row">
+                    <div className="col-10">
+                        <button className="btn btn-dark btn-lg btn-block" onClick={this.navigate}>Launch</button>
+                    </div>
+                </div>
             </Aux>
         )
     }
