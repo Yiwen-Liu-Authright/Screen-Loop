@@ -46,7 +46,11 @@ class VideoDisplay extends Component{
                 <h1 className = "lead">Video Box</h1>
                 <VideoBox />
                 <VideoModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.props.videoList[0]} />
-                <button className="btn btn-dark btn-lg btn-block" onClick = {this.navigate}>Launch</button>
+                <div className="row">
+                    <div className="col-10">
+                        <button className="btn btn-dark btn-lg btn-block" onClick={this.navigate}>Launch</button>
+                    </div>
+                </div>
             </Aux>
         )
     }

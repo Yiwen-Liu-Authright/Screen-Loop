@@ -154,7 +154,7 @@ class ImageBox extends Component {
                             <input type="url"
                                 className="form-control"
                                 id="new-image"
-                                placeholder="Add a new url"
+                                placeholder="Add a new image source"
                                 value={this.state.newImage}
                                 onChange={this.handleChangeImage}
                             />

@@ -1,4 +1,7 @@
-import { SET_INTERVAL, SET_OPTIONLIST, SET_IMAGELIST, SET_VIDEOLIST, SET_PPTLIST } from './actionTypes';
+import { 
+    SET_INTERVAL, 
+    SET_OPTIONLIST, SET_IMAGELIST, SET_VIDEOLIST, SET_PPTLIST 
+} from './actionTypes';
 
 export const setInterval = newInterval => ({
     type: SET_INTERVAL,
