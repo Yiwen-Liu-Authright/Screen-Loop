@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { setInterval, setImageList } from '../actions/actions';
 import axios from '../axios-list'
 
-class ImageBox extends React.Component {
+export class ImageBox extends React.Component {
     componentWillMount() {
         axios.get('https://screen-loops.firebaseio.com/initialState/imageList.json')
             .then(response => {
