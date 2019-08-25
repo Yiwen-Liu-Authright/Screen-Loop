@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setPptList } from '../actions/actions';
 import axios from '../axios-list'
 
-class PptBox extends Component {
+class PptBox extends React.Component {
     componentWillMount() {
         axios.get('https://screen-loops.firebaseio.com/initialState/pptList.json')
         .then(response => {

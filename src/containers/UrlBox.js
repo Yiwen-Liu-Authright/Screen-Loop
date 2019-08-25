@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setOptionList } from '../actions/actions';
 
-class UrlBox extends Component {
+class UrlBox extends React.Component {
     state = {
         selectOption: undefined,
         newUrl: "",

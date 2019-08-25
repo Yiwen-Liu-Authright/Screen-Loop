@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
 import VideoModal from '../components/UI/Modal/VideoModal';
 import VideoBox from './VideoBox';
 
-class VideoDisplay extends Component{
+class VideoDisplay extends React.Component{
     state = {
         currentVideo: null,
         showingPics: false,

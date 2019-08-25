@@ -1,10 +1,10 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import Aux from '../hoc/Aux/Aux';
 import PptModal from '../components/UI/Modal/PptModal';
 import PptBox from './PptBox';
 
-class PptDisplay extends Component{
+class PptDisplay extends React.Component{
     state = {
         currentPic: null,
         showingPics: false,

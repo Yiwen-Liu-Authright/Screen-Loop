@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { setInterval, setVideoList } from '../actions/actions';
 import axios from '../axios-list'
 
-class VideoBox extends Component {
+class VideoBox extends React.Component {
     componentWillMount() {
         axios.get('https://screen-loops.firebaseio.com/initialState/videoList.json')
         .then(response => {
