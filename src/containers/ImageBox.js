@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { setInterval, setImageList } from '../actions/actions';
+import { setInterval, setImageList, setOptionList } from '../actions/actions';
 import axios from '../axios-list'
 
 export class ImageBox extends React.Component {
@@ -37,6 +37,12 @@ export class ImageBox extends React.Component {
     }
 
     moveUpImage = () => {
+        // const initialProps = {
+        //     optionList: this.props.optionList,
+        //     selectedOption: this.state.selectImage,
+        // }
+        // // const newImageList = useMoveUp(initialProps)
+        // this.props.setOptionList(newImageList);
         const index = this.props.imageList.indexOf(this.state.selectImage);
         if (this.state.selectImage !== undefined && index > 0) {
             console.log("Move Up Image");
@@ -132,7 +138,6 @@ export class ImageBox extends React.Component {
                             {this.props.imageList.map((image, index) => {
                                 return <option key={image} value={image}>{image}</option>
                             })}
-                            }
                         </select>
                     </div>
                     <div className="col-2">
@@ -185,12 +190,15 @@ export class ImageBox extends React.Component {
 
 const mapStateToProps = (state) => ({
     imageList: state.imageList,
+    optionList: state.optionList,
     currentInterval: state.currentInterval,
+
 })
 
 const mapDispatchToProps = {
     setInterval,
     setImageList,
+    setOptionList,
 }
 
 // connect is a hoc function, it takes a function as parameter and return the function

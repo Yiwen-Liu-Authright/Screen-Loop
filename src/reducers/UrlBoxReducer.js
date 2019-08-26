@@ -6,6 +6,8 @@ let initialState = {
     videoList: [],
     pptList: [],
     optionList: [],
+
+    selectedOption: undefined,
 }
 
 export default function (state = initialState, action) {
