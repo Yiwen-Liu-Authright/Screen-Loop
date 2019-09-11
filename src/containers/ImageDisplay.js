@@ -48,7 +48,7 @@ class ImageDisplay extends React.Component {
                 <ImageModal show={this.state.showingPics} modalClosed={this.lightBoxCloseHandler} imgSrc={this.state.currentPic} />
                 <div className="row">
                     <div className="col-10">
-                        <button className="btn btn-dark btn-lg btn-block" style={{background: "rgb(0,0,0,0.8)"}} onClick={this.navigate}>Launch</button>
+                        <button className="btn btn-dark btn-lg btn-block" style={{background: "rgb(0,0,03,0.8)"}} onClick={this.navigate}>Launch</button>
                     </div>
                 </div>
             </Aux>

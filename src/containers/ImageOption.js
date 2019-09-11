@@ -9,11 +9,11 @@ const ImageOption = props => {
         document.title = 'Image Loop';
     })
 
-    const [imageList, setImageList] = useState([]);
     const response = usefetch();
-    useEffect(()=>{
+    const [imageList, setImageList] = useState([]);
+    useEffect(() => {
         setImageList(response);
-        console.log("hello");
+        console.log(response);
     }, [response])
 
     const [selectedImage, setSelectedImage] = useState(undefined);
