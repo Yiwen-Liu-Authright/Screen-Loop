@@ -12,7 +12,7 @@ import Toolbar from './components/Navigation/Toolbar/Toolbar';
 
 
 class ScreenLoop extends React.Component {
-    // Test Hello
+    // Test Hello1
     render() {
         const currentInterval = this.props.currentInterval;
         console.log("Current Interval: " + currentInterval);
