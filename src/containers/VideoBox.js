@@ -125,19 +125,19 @@ class VideoBox extends React.Component {
                         <select
                             className="custom-select"
                             size="9"
-                            value={this.state.selectImage}
+                            value={this.state.selectVideo}
                             onChange={this.handleChange}
                         >
-                            {this.props.videoList.map((image, index) => {
-                                return <option key={image} value={image}>{image}</option>
+                            {this.props.videoList.map((video, index) => {
+                                return <option key={video} value={video}>{video}</option>
                             })}
                             }
                         </select>
                     </div>
                     <div className="col-2">
-                        <button className="btn btn-light btn-block" onClick={this.moveUpImage}>Up</button>
-                        <button className="btn btn-light btn-block" onClick={this.removeImage}>Delete</button>
-                        <button className="btn btn-light btn-block" onClick={this.moveDownImage}>Down</button>
+                        <button className="btn btn-light btn-block" onClick={this.moveUpVideo}>Up</button>
+                        <button className="btn btn-light btn-block" onClick={this.removeVideo}>Delete</button>
+                        <button className="btn btn-light btn-block" onClick={this.moveDownVideo}>Down</button>
                         <button className="btn btn-dark btn-block" onClick={this.listupdateHandler}>Update</button>
                     </div>
                     <div className="col-2">
@@ -152,15 +152,15 @@ class VideoBox extends React.Component {
                         <div className="form-group">
                             <input type="url"
                                 className="form-control"
-                                id="new-image"
+                                id="new-video"
                                 placeholder="Add a new video source"
-                                value={this.state.newImage}
-                                onChange={this.handleChangeImage}
+                                value={this.state.newVideo}
+                                onChange={this.handleChangeVideo}
                             />
                         </div>
                     </div>
                     <div className="col-2">
-                        <button className="btn btn-light btn-block" onClick={this.addImage}>Add URL</button>
+                        <button className="btn btn-light btn-block" onClick={this.addVideo}>Add URL</button>
                     </div>
                     <div className="col-3">
                         <input

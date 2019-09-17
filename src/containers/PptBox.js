@@ -125,19 +125,19 @@ class PptBox extends React.Component {
                         <select
                             className="custom-select"
                             size="9"
-                            value={this.state.selectImage}
+                            value={this.state.selectPpt}
                             onChange={this.handleChange}
                         >
-                            {this.props.pptList.map((image, index) => {
-                                return <option key={image} value={image}>{image}</option>
+                            {this.props.pptList.map((ppt, index) => {
+                                return <option key={ppt} value={ppt}>{ppt}</option>
                             })}
                             }
                         </select>
                     </div>
                     <div className="col-2">
-                        <button className="btn btn-light btn-block" onClick={this.moveUpImage}>Up</button>
-                        <button className="btn btn-light btn-block" onClick={this.removeImage}>Delete</button>
-                        <button className="btn btn-light btn-block" onClick={this.moveDownImage}>Down</button>
+                        <button className="btn btn-light btn-block" onClick={this.moveUpPpt}>Up</button>
+                        <button className="btn btn-light btn-block" onClick={this.removePpt}>Delete</button>
+                        <button className="btn btn-light btn-block" onClick={this.moveDownPpt}>Down</button>
                         <button className="btn btn-dark btn-block" onClick={this.listupdateHandler}>Update</button>
                     </div>
                     <div className="col-2">
@@ -152,15 +152,15 @@ class PptBox extends React.Component {
                         <div className="form-group">
                             <input type="url"
                                 className="form-control"
-                                id="new-image"
+                                id="new-ppt"
                                 placeholder="Add a new powerpoint source"
-                                value={this.state.newImage}
-                                onChange={this.handleChangeImage}
+                                value={this.state.newPpt}
+                                onChange={this.handleChangePpt}
                             />
                         </div>
                     </div>
                     <div className="col-2">
-                        <button className="btn btn-light btn-block" onClick={this.addImage}>Add URL</button>
+                        <button className="btn btn-light btn-block" onClick={this.addPpt}>Add URL</button>
                     </div>
                     <div className="col-3">
                         <input
